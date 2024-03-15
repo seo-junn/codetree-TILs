@@ -3,7 +3,7 @@ import sys
 n, s = map(int,sys.stdin.readline().split())
 nums = list(map(int,sys.stdin.readline().split()))
 
-length = n
+length = n+1
 start = 0
 end = 0
 total = 0
@@ -16,4 +16,4 @@ while end < n:
         start += 1
     end += 1
 
-print(length)
+print(length if length < n+1 else -1)
