@@ -10,7 +10,7 @@ total = 0
 
 while end < n:
     total += nums[end]
-    while total > s:
+    while total >= s:
         length = min(length,end-start+1)
         total -= nums[start]
         start += 1
