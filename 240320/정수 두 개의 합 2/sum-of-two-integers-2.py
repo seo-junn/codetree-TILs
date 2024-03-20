@@ -10,7 +10,8 @@ count = 0
 while start < end:
     while nums[end] > k-nums[start]:
         end -= 1
-    
+    if start >= end: break
+
     count += end-start
     start += 1
 
