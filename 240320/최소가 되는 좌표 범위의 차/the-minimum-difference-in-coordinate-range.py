@@ -2,6 +2,7 @@ import sys
 import bisect
 
 N, D = map(int,sys.stdin.readline().split())
+
 dots = {}
 for _ in range(N):
     x, y = map(int,sys.stdin.readline().split())
@@ -21,13 +22,8 @@ for left in range(len(index)):
     while left < right:
         if index[right] - index[left] >= D:
             for lx in dots[index[left]]:
-                lidx = bisect.bisect_left(dots[index[right]],lx)
-                ridx = bisect.bisect_right(dots[index[right]],lx)
-                if lidx == ridx:
-                    dist = min(dist,abs(dots[index[right]][0]-lx),abs(dots[index[right]][-1]-lx))
-                else:
-                    for idx in range(lidx,ridx):
-                        dist = min(dist,abs(dots[index[right]][idx]-lx))
+                for rx in dots[index[right]]:
+                    dist = min(dist,abs(lx-rx))
                 
         right -= 1
 
