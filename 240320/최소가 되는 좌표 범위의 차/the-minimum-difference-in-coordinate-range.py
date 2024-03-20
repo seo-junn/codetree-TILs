@@ -26,8 +26,8 @@ for left in range(len(index)):
                 if lidx == ridx:
                     dist = min(dist,abs(dots[index[right]][0]-lx),abs(dots[index[right]][-1]-lx))
                 else:
-                    dl = abs(dots[index[right]][bisect.bisect_left(dots[index[right]],lx)]-lx)
-                    dr = abs(dots[index[right]][bisect.bisect_right(dots[index[right]],lx)-1]-lx)
+                    for idx in range(lidx,ridx):
+                        dist = min(dist,abs(dots[index[right]][idx]-lx))
                 
         right -= 1
 
