@@ -17,4 +17,6 @@ for i in range(n):
         
         cache[nums[i]] += 1
 
+length = max(length,n-start)
+
 print(length)
