@@ -20,7 +20,7 @@ cand.sort()
 
 ans = cand[-1][0]
 for i in range(len(cand)-2,-1,-1):
-    if cand[i][-1] < cand[-1][1]:
+    if cand[i][-1] < cand[-1][1] or cand[i][1] > cand[-1][-1]:
         ans += cand[i][0]
         break
 
