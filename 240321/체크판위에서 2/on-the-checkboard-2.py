@@ -3,6 +3,10 @@ import sys
 R, C = map(int,sys.stdin.readline().split())
 board = [sys.stdin.readline().strip().split() for _ in range(R)]
 
+if board[0][0] == board[-1][-1]:
+    print(0)
+    exit(0)
+
 color = {'W':'B','B':'W'}
 now = board[0][0]
 
