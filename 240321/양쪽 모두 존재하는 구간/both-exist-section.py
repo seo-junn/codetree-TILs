@@ -30,11 +30,15 @@ while end < n:
         cache[nums[end]] += 1
         end += 1
 
-if count == m:
+while count == m:
     if length > end-start:
         length = end - start
         left, right = start,end
         in_group = True
+    cache[nums[start]] -= 1
+    if cache[nums[start]] == 0:
+        count -= 1
+    start += 1
 
 cache = [0]*(m+1)
 count = 0
