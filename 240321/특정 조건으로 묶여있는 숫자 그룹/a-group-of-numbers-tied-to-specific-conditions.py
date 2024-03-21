@@ -11,11 +11,17 @@ while end < N:
     if nums[end] - nums[start] <= K:
         end += 1
     else:
-        cand.append(end-start)
+        cand.append((end-start,start,end-1))
         while nums[end] - nums[start] > K:
             start += 1
 
-cand.append(end-start)
+cand.append((end-start,start,end-1))
 cand.sort()
 
-print(cand[-1]+cand[-2])
+ans = cand[-1][0]
+for i in range(len(cand)-2,-1,-1):
+    if cand[i][-1] < cand[-1][1]:
+        ans += cand[i][0]
+        break
+
+print(ans)
