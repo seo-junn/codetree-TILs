@@ -2,7 +2,7 @@ import sys
 n = int(sys.stdin.readline())
 people = list(map(int,sys.stdin.readline().split()))
 
-min_dist = 10*7
+min_dist = 10**7
 
 for target in range(n):
     dist = 0
