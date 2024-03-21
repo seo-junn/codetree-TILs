@@ -24,6 +24,11 @@ int main() {
 
     qsort(dots,N,sizeof(dots[0]),dot_comp);
 
+    if(dots[N-1][1]-dots[0][1] < D) {
+        printf("-1");
+        return 0;
+    }
+
     int dist = 10000000;
     int left, right;
 
