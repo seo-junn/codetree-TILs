@@ -15,7 +15,7 @@ for i in range(n):
         q.append((i,j))
         cache = [[0]*n for _ in range(n)]
         cache[i][j] += 1
-        for depth in range(n):
+        for depth in range(n+1):
             nq = deque()
             while q:
                 pr,pc = q.popleft()
@@ -25,6 +25,7 @@ for i in range(n):
                     if 0 <= nr < n and 0 <= nc < n and cache[nr][nc] == 0:
                         cache[nr][nc] += 1
                         nq.append((nr,nc))
+
             cost = depth**2 + (depth+1)**2
             if cost <= gold*m:
                 ans = max(ans,gold)
