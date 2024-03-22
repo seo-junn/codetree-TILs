@@ -51,4 +51,4 @@ if find:
     print(who)
     print(row,col)
 else:
-    print(-1)
+    print(0)
