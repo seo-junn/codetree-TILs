@@ -18,7 +18,7 @@ for row in range(n):
                         pr,pc = nr,nc
                     else:
                         temp = 0
-                        fali = True
+                        fail = True
                         break
                 
                 if fail: continue
@@ -30,7 +30,7 @@ for row in range(n):
                         pr,pc = nr,nc
                     else:
                         temp = 0
-                        fali = True
+                        fail = True
                         break
                 
                 if fail: continue
@@ -42,7 +42,7 @@ for row in range(n):
                         pr,pc = nr,nc
                     else:
                         temp = 0
-                        fali = True
+                        fail = True
                         break
                 
                 if fail: continue
@@ -54,7 +54,7 @@ for row in range(n):
                         pr,pc = nr,nc
                     else:
                         temp = 0
-                        fali = True
+                        fail = True
                         break
                 
                 if fail: continue
