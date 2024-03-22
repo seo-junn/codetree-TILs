@@ -10,25 +10,22 @@ def compare(x, y):
 
 n = int(sys.stdin.readline())
 
+score = 0
 chunks = []
 for _ in range(n):
     line = sys.stdin.readline().strip()
     lc,rc = 0,0
     for c in line:
         if c == '(': lc += 1
-        else: rc += 1
-    count = 0
-    for i in range(len(line)):
-        if line[i] == '(':
-            for j in range(i+1,len(line)):
-                if line[j] == ')':
-                    count += 1
-    chunks.append((lc,rc,count))
+        else:
+            rc += 1
+            score += lc
+    
+    chunks.append((lc,rc))
 
 chunks.sort(key=cmp_to_key(compare))
-score = 0
+
 for i in range(n):
-    score += chunks[i][-1]
     for j in range(i+1,n):
         score += chunks[i][0]*chunks[j][1]
 
