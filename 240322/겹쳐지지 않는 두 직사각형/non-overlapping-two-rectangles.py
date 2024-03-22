@@ -10,7 +10,7 @@ for r1 in range(n):
                 for r3 in range(n):
                     for c3 in range(m):
                         for r4 in range(r3,n):
-                            for c4 in range(c3,n):
+                            for c4 in range(c3,m):
                                 if r1 <= r3 <= r2 or r1 <= r4 <= r2 or (c3 <= c1 <= c4 and c3 <= c2 <= c4):
                                     if c1 <= c3 <= c2 or c1 <= c4 <= c2 or (c3 <= c1 <= c4 and c3 <= c2 <= c4): continue
                                     temp = 0
