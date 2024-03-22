@@ -11,7 +11,7 @@ jewels.sort(key=lambda x:-x[-1])
 
 val = 0
 jew = 0
-while M > 0:
+while M > 0 and jew < N:
     if jewels[jew][0] < M:
         M -= jewels[jew][0]
         val += jewels[jew][1]
