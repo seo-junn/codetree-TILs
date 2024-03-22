@@ -13,7 +13,7 @@ count = 0
 for lb,rb in blacks:
     l_idx = bisect_left(reds,lb)
     r_idx = bisect_left(reds,rb)
-    for idx in range(l_idx,r_idx+1):
+    for idx in range(l_idx,r_idx):
         if cache[idx] == 0 and lb <= reds[idx] <= rb:
             cache[idx] += 1
             count += 1
