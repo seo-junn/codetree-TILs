@@ -20,5 +20,6 @@ for i in range(1,N):
     if library[i] == '1':
         temp = i-start
         dist = min(dist,temp)
+        start = i
 
 print(dist)
