@@ -25,8 +25,9 @@ for _ in range(n):
 
 chunks.sort(key=cmp_to_key(compare))
 
-for i in range(n):
-    for j in range(i+1,n):
-        score += chunks[i][0]*chunks[j][1]
+clc = 0
+for lc, rc in chunks:
+    score += clc*rc
+    clc += lc
 
 print(score)
