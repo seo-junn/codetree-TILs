@@ -3,9 +3,9 @@ board = [list(map(int,input().split())) for _ in range(n)]
 
 ans = -1
 for r1 in range(n):
-    for c1 in range(n):
+    for c1 in range(m):
         for r2 in range(r1,n):
-            for c2 in range(c1,n):
+            for c2 in range(c1,m):
                 pos = True
                 for r in range(r1,r2+1):
                     for c in range(c1,c2+1):
