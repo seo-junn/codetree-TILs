@@ -3,6 +3,10 @@ import sys
 n, m = map(int,sys.stdin.readline().split())
 board = [list(map(int,sys.stdin.readline().split())) for _ in range(n)]
 
+if m == 1:
+    print(2*n)
+    exit(0)
+
 count = 0
 for row in range(n):
     temp = 1
