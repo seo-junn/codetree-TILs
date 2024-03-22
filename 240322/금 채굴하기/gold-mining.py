@@ -14,6 +14,7 @@ for i in range(n):
         q = deque()
         q.append((i,j))
         cache = [[0]*n for _ in range(n)]
+        cache[i][j] += 1
         for depth in range(n):
             nq = deque()
             while q:
