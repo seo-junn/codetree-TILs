@@ -12,16 +12,16 @@ for i in range(n):
     for j in range(n):
         gold = 0
         q = deque()
-        q.append((i,j))
         cache = [[0]*n for _ in range(n)]
+        q.append((i,j))
         cache[i][j] += 1
         for depth in range(n+1):
             nq = deque()
             while q:
                 pr,pc = q.popleft()
                 if board[pr][pc]: gold += 1
-                for i in range(4):
-                    nr,nc = pr+dr[i],pc+dc[i]
+                for idx in range(4):
+                    nr,nc = pr+dr[idx],pc+dc[idx]
                     if 0 <= nr < n and 0 <= nc < n and cache[nr][nc] == 0:
                         cache[nr][nc] += 1
                         nq.append((nr,nc))
