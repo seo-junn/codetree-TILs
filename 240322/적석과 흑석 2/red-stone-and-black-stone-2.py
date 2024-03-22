@@ -1,22 +1,22 @@
 import sys
+from bisect import bisect_left
 
 C, N = map(int,sys.stdin.readline().split())
 reds = [int(sys.stdin.readline()) for _ in range(C)]
 blacks = [tuple(map(int,sys.stdin.readline().split())) for _ in range(N)]
 
-reds.sort(reverse = True)
-blacks.sort(reverse = True)
+reds.sort()
+cache = [0]*C
+blacks.sort(key=lambda x:(x[1]-x[0],x[0]))
 
-r, b = 0, 0
 count = 0
-while r < C and b < N:
-    if reds[r] < blacks[b][0]:
-        b += 1
-    elif reds[r] > blacks[b][1]:
-        r += 1
-    else:
-        count += 1
-        r += 1
-        b += 1
+for lb,rb in blacks:
+    l_idx = bisect_left(reds,lb)
+    r_idx = bisect_left(reds,rb)
+    for idx in range(l_idx,r_idx+1):
+        if cache[idx] == 0 and lb <= reds[idx] <= rb:
+            cache[idx] += 1
+            count += 1
+            break
 
 print(count)
