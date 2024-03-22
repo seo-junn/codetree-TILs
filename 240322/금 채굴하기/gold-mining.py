@@ -10,7 +10,7 @@ board = [list(map(int,sys.stdin.readline().split())) for _ in range(n)]
 ans = 0
 for i in range(n):
     for j in range(n):
-        gold = board[i][j]
+        gold = 0
         q = deque()
         q.append((i,j))
         cache = [[0]*n for _ in range(n)]
