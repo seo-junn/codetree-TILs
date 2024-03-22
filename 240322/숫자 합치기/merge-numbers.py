@@ -3,6 +3,7 @@ import heapq
 
 n = int(sys.stdin.readline())
 nums = list(map(int,sys.stdin.readline().split()))
+nums.sort()
 
 cost = 0
 while len(nums) > 1:
