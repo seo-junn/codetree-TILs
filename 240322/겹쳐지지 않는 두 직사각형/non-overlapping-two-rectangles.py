@@ -7,8 +7,8 @@ for r1 in range(n):
     for c1 in range(m):
         for r2 in range(r1,n):
             for c2 in range(c1,m):
-                for r3 in range(r2,n):
-                    if r2 == r3:
+                for r3 in range(r1,n):
+                    if r2 >= r3:
                         for c3 in range(c2+1,m):
                             for r4 in range(r3,n):
                                 for c4 in range(c3,n):
