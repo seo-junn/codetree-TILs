@@ -1,8 +1,9 @@
+import sys
 from itertools import product
 
 alp = 'abcdef'
 formula = list(input().strip())
-max_res = 0
+max_res = -sys.maxsize
 for item in product(range(1,5),repeat=6):
     base = {}
     for i in range(6):
