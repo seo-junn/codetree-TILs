@@ -16,6 +16,7 @@ def search(dot):
             visited[i] += 1
             search(i)
 
+visited[0] = 1
 search(0)
 
 print(sum(visited)-1)
