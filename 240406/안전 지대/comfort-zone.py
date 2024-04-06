@@ -14,7 +14,7 @@ def search(pr,pc):
             search(nr,nc)
 
 max_count = 0
-target = 0
+target = 1
 for K in range(1,101):
     visited = [[0]*M for _ in range(N)]
     count = 0
