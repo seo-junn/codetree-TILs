@@ -15,4 +15,4 @@ for _ in range(int(input())):
             break
     if reached: break
 
-print(time)
+print(time if reached else -1)
