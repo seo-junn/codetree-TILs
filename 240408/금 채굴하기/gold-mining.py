@@ -31,6 +31,6 @@ def search(row,col,max_depth):
 res = 0
 for row in range(n):
     for col in range(n):
-        res = max(res,search(row,col,n))
+        res = max(res,search(row,col,n+1))
 
 print(res)
