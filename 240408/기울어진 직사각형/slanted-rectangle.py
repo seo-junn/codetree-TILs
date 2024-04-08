@@ -19,7 +19,7 @@ for row in range(2,n):
                     else:
                         fail = True
                         break
-                if fail: continue
+                if fail: break
 
                 for i in range(even):
                     nr,nc = pr-1,pc-1
@@ -39,7 +39,7 @@ for row in range(2,n):
                     else:
                         fail = True
                         break
-                if fail: continue
+                if fail: break
 
                 for i in range(even):
                     nr,nc = pr+1,pc+1
