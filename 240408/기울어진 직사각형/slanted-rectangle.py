@@ -7,7 +7,7 @@ def search(row,col):
     max_val = 0
     for depth in range(2,row+1):
         for ur in range(1,min(depth,n-col)):
-            ul = row-ur
+            ul = depth-ur
             val = 0
             pr,pc = row,col
             for i in range(ur):
