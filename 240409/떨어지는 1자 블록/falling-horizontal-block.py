@@ -11,7 +11,7 @@ def check(row):
     return True
 
 row = 0
-while check(row): row += 1
+while check(row) and row < n: row += 1
 row -= 1
 
 for col in range(k,k+m):
