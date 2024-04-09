@@ -29,21 +29,38 @@ def rotate(board):
 def explosion():
     for col in range(N):
         temp = []
-        target = 0
-        count = 0
-        for row in range(N-1,-1,-1):
-            if board[row][col] != 0 and board[row][col] == target:
-                count += 1
+        for row in range(N):
+            if board[row][col]:
+                temp.append(board[row][col])
+                board[row][col] = 0
+        
+        while True:
+            exploded = False
+            target = 0
+            count = 0
+            next_temp = []
+            for i in range(len(temp)):
+                if temp[i] == target:
+                    count += 1
+                else:
+                    if count < M:
+                        next_temp += [target]*count
+                    else:
+                        exploded = True
+                    target = temp[i]
+                    count = 1
+            if count < M:
+                next_temp += [target]*count
             else:
-                if target != 0 and count < M:
-                    temp += [target]*count
-                target = board[row][col]
-                count = 1
-            board[row][col] = 0
-        if target != 0 and count < M:
-            temp += [target]*count
-        for idx in range(len(temp)):
-            board[row-1-idx][col] = temp[idx]
+                exploded = True
+            
+            if not exploded: break
+            temp = next_temp
+        
+        row = N-1
+        for idx in range(len(temp)-1,-1,-1):
+            board[row][col] = temp[idx]
+            row -= 1
 
 for _ in range(K):
     explosion()
