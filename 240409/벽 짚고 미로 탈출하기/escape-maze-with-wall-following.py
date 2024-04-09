@@ -24,7 +24,7 @@ while 0 <= x < N and 0 <= y < N:
                     break
                 cache[nx][ny] += 1
             else:
-                if cache[nx][ny]:
+                if cache[nx][ny] > 2:
                     failed = True
                     break
                 cache[nx][ny] += 1
@@ -36,7 +36,7 @@ while 0 <= x < N and 0 <= y < N:
     else:
         d = (d-1)%4
         nx,ny = x+dx[d],y+dy[d]
-        if cache[nx][ny]:
+        if cache[nx][ny] > 2:
             failed = True
             break
         cache[nx][ny] += 1
