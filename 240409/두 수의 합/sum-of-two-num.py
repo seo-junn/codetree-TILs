@@ -14,5 +14,5 @@ for key in base.keys():
             count += base[key] * base[k-key]
         else:
             count += base[key]*(base[key]-1)
-print(base)
+
 print(count//2)
