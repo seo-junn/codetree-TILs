@@ -7,8 +7,13 @@ for num in map(int,sys.stdin.readline().split()):
     else: base[num] = 1
 
 count = 0
+temp = 0
 for key in base.keys():
+    t_key = k-key
     if k-key in base:
-        count += base[key] * base[k-key]
+        if t_key != key:
+            count += base[key] * base[k-key]
+        else:
+            temp += base[key]*(base[key]-1)
 
-print(count//2)
+print(count//2 + temp)
