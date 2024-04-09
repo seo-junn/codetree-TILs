@@ -33,7 +33,7 @@ for _ in range(int(sys.stdin.readline())):
                 balls.append((pr,pc,d))
         for row in range(N):
             for col in range(N):
-                if pos[pr][pc] != 1:
-                    pos[pr][pc] = 0
+                if pos[row][col] != 1:
+                    pos[row][col] = 0
     
     print(len(balls))
