@@ -2,17 +2,23 @@ import sys
 from collections import Counter
 
 n = int(sys.stdin.readline())
-A = Counter(map(int,sys.stdin.readline().split()))
-B = Counter(map(int,sys.stdin.readline().split()))
-C = Counter(map(int,sys.stdin.readline().split()))
-D = Counter(map(int,sys.stdin.readline().split()))
+A = list(map(int,sys.stdin.readline().split()))
+B = list(map(int,sys.stdin.readline().split()))
+C = list(map(int,sys.stdin.readline().split()))
+D = list(map(int,sys.stdin.readline().split()))
 
+base = {}
 count = 0
-for a in A.keys():
-    for b in B.keys():
-        for c in C.keys():
-            d = 0 - a - b - c
-            if d in D:
-                count += A[a]*B[b]*C[c]*D[d]
+
+for a in range(n):
+    for b in range(n):
+        val = A[a]+B[b]
+        if val in base: base[val] += 1
+        else: base[val] = 1
+
+for c in range(n):
+    for d in range(n):
+        val = -C[c]-D[d]
+        if val in base: count += base[val]
 
 print(count)
