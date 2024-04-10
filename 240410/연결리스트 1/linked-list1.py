@@ -1,15 +1,17 @@
+import sys
+
 class Node:
     def __init__(self,data):
         self.data = data
         self.prev = None
         self.next = None
 
-S_init = input()
+S_init = sys.stdin.readline().strip()
 cur = Node(S_init)
-N = int(input())
+N = int(sys.stdin.readline())
 
 for _ in range(N):
-    line = input().split()
+    line = sys.stdin.readline().strip().split()
 
     if line[0] == '1':
         node = Node(line[1])
