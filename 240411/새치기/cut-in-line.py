@@ -72,7 +72,7 @@ for _ in range(Q):
         if a.prev: a.prev.next = b.next
         else: lines[prev_line_num][0] = b.next
         if b.next: b.next.prev = a.prev
-        else: lines[prev_line_num][0] = a.prev
+        else: lines[prev_line_num][1] = a.prev
         a.prev, b.next = None, None
 
         # put people
