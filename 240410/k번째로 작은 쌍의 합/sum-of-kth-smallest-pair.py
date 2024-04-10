@@ -17,7 +17,7 @@ if r == m and l*r < k:
     while l < n and l*r < k: l += 1
 
 base = []
-bias = min(l,r)
+bias = max(l,r)
 l,r = min(n,l+bias),min(m,r+bias)
 for i in range(l):
     for j in range(r):
