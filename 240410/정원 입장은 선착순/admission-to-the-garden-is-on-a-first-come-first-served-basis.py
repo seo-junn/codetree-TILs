@@ -10,7 +10,7 @@ for i in range(1, N + 1):
     a, t = map(int, sys.stdin.readline().split())
     people.append((a,i,t))
 
-people.sort(key=lambda x:x[0])
+people.sort(key=lambda x:(x[0],x[1]))
 
 time = 0
 for arrive, num, delay in people:
