@@ -13,7 +13,7 @@ for _ in range(int(sys.stdin.readline())):
             heapq.heappush(left_pq,-nums[i])
         else:
             heapq.heappush(right_pq,nums[i])
-        if i%2:
+        if i%2 == 0:
             if len(left_pq) > len(right_pq):
                 heapq.heappush(right_pq,mid)
                 mid = -heapq.heappop(left_pq)
