@@ -9,6 +9,7 @@ wait_line = []
 for i in range(1, N + 1):
     a, t = map(int, sys.stdin.readline().split())
     people.append((a,i,t))
+people.append((sys.maxsize,N+1,0))
 
 people.sort()
 
