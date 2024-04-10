@@ -51,6 +51,7 @@ for _ in range(Q):
         if b.prev: b.prev.next = a
         else: lines[line_num_b][0] = a
         a.prev, a.next, b.prev = b.prev, b, a
+        a.line = line_num_b
 
     elif command == 2:
         # pick up a
@@ -80,6 +81,10 @@ for _ in range(Q):
         if c.prev: c.prev.next = a
         else: lines[next_line_num][0] = a
         a.prev, b.next, c.prev = c.prev, c, b
+        cur = c
+        while cur:
+            cur.line = next_line_num
+            cur = cur.prev
 
 # print result
 for i in range(M):
