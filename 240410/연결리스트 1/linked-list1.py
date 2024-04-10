@@ -1,5 +1,24 @@
 import sys
+from collections import deque
 
+cur = sys.stdin.readline().strip()
+lq,rq = deque(),deque()
+
+for _ in range(int(sys.stdin.readline())):
+    line = sys.stdin.readline().strip().split()
+    if line[0] == '1': lq.append(line[1])
+    elif line[0] == '2': rq.appendleft(line[1])
+    elif line[0] == '3':
+        if lq:
+            rq.appendleft(cur)
+            cur = lq.pop()
+    else:
+        if rq:
+            lq.append(cur)
+            cur = rq.popleft()
+    print(lq[-1] if lq else "(Null)", cur, rq[0] if rq else "(Null)")
+
+'''
 class Node:
     def __init__(self,data):
         self.data = data
@@ -44,3 +63,4 @@ for _ in range(N):
             cur = cur.next
     
     print(cur.prev.data if cur.prev else '(Null)',cur.data,cur.next.data if cur.next else '(Null)')
+'''
