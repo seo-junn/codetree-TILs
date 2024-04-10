@@ -6,6 +6,8 @@ base = Counter(word)
 
 ans = ''
 for c in word:
-    if base[c] == 1: ans += c
+    if base[c] == 1:
+        ans += c
+        break
 
 print(ans if ans else "None")
