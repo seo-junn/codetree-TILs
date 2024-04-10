@@ -7,22 +7,18 @@ arr2 = list(sorted(map(int,sys.stdin.readline().split())))
 
 l,r = 0,0
 
-while l < n and r < m and l*r < k:
-    if arr1[l] <= arr2[r]: l += 1
-    else: r += 1
-
-if l == n and l*r < k:
-    while r < m and l*r < k: r += 1
-if r == m and l*r < k:
-    while l < n and l*r < k: l += 1
-
 base = []
-bias = max(l,r)
-l,r = min(n,l+bias),min(m,r+bias)
-for i in range(l):
-    for j in range(r):
-        heapq.heappush(base,-(arr1[i]+arr2[j]))
 
-for _ in range(l*r-k): heapq.heappop(base)
+for i in range(n):
+    heapq.heappush(base,(arr1[i]+arr2[0],i,0))
 
-print(-base[0])
+for _ in range(k-1):
+    dumy, i, j = heapq.heappop(base)
+
+    j += 1
+    if j < m:
+        heapq.heappush(base, (arr1[i]+arr2[j],i,j))
+
+ans,_,_ = heapq.heappop(base)
+
+print(ans)
