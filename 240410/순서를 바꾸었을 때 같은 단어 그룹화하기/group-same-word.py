@@ -3,7 +3,7 @@ import sys
 n = int(sys.stdin.readline())
 base = {}
 for _ in range(n):
-    word = ''.join(sorted(list(sys.stdin.readline().strip())))
+    word = ''.join(sorted(sys.stdin.readline().strip()))
     if word in base: base[word] += 1
     else: base[word] = 1
 
