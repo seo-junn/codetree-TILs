@@ -28,7 +28,6 @@ for _ in range(int(sys.stdin.readline())):
         taken_head = bookshelves[i][0]
         if taken_head == None: continue
 
-        put_tail = bookshelves[j][1]
         node = taken_head
         
         if taken_head.next:
@@ -38,7 +37,8 @@ for _ in range(int(sys.stdin.readline())):
         else:
             bookshelves[i][0] = None
             bookshelves[i][1] = None
-        
+
+        put_tail = bookshelves[j][1]        
         node.next = None
         if put_tail:
             put_tail.next = node
@@ -52,7 +52,6 @@ for _ in range(int(sys.stdin.readline())):
         taken_tail = bookshelves[i][1]
         if taken_tail == None: continue
 
-        put_head = bookshelves[j][0]
         node = taken_tail
 
         if taken_tail.prev:
@@ -62,7 +61,8 @@ for _ in range(int(sys.stdin.readline())):
         else:
             bookshelves[i][0] = None
             bookshelves[i][1] = None
-        
+
+        put_head = bookshelves[j][0]        
         node.prev = None
         if put_head:
             put_head.prev = node
