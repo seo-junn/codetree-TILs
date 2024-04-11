@@ -47,6 +47,7 @@ for _ in range(Q):
         if B.prev: B.prev.next = A
         else: Lines[line_of_B][0] = A
         A.prev, A.next, B.prev = B.prev, B, A
+        A.line_num = line_of_B
 
     elif command == '2':
         A = people[in_names[0]]
@@ -76,6 +77,10 @@ for _ in range(Q):
         if C.prev: C.prev.next = A
         else: Lines[next_line][0] = A
         A.prev, B.next, C.prev = C.prev, C, B
+        cur = B
+        while cur != A.prev:
+            cur.line_num = next_line
+            cur = cur.prev
 
 # print result
 for i in range(M):
