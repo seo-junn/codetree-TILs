@@ -34,8 +34,9 @@ for i in range(1,1001):
             y_target = i
 
 ans = sys.maxsize
-for xx in range(-4,5,2):
-    for yy in range(-4,5,2):
+window_size = 10
+for xx in range(-window_size,window_size+1,2):
+    for yy in range(-window_size,window_size+1,2):
         counts = [0]*4
         x_line = x_target + xx
         y_line = y_target + yy
