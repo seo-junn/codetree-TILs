@@ -17,9 +17,8 @@ for i in range(N):
 
     if bomb in window: window[bomb] += 1
     else: window[bomb] = 1
-    window_size += 1
 
-    if window_size == K+1:
+    if i > K:
         window[bombs[tail]] -= 1
         if window[bombs[tail]] == 0: window.pop(bombs[tail])
         tail += 1
