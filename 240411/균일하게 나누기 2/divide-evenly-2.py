@@ -34,7 +34,7 @@ for i in range(1,1001):
             y_target = i
 
 ans = sys.maxsize
-window_size = 10
+window_size = 20
 for xx in range(-window_size,window_size+1,2):
     for yy in range(-window_size,window_size+1,2):
         counts = [0]*4
