@@ -23,8 +23,8 @@ for i in range(1,1001):
     elif i%2 == 0:
         diff = abs(N-cx-cx)
         if diff < x_diff:
-            x_target = i
             x_diff = diff
+            x_target = i
     if ys[i]:
         cy += ys[i]
     elif i%2 == 0:
@@ -33,11 +33,18 @@ for i in range(1,1001):
             y_diff = diff
             y_target = i
 
-counts = [0]*4
-for x,y in dots:
-    if x > x_target and y > y_target: counts[0] += 1
-    elif x < x_target and y > y_target: counts[1] += 1
-    elif x < x_target and y < y_target: counts[2] += 1
-    else: counts[3] += 1
+ans = sys.maxsize
+for xx in range(-4,5,2):
+    for yy in range(-4,5,2):
+        counts = [0]*4
+        x_line = x_target + xx
+        y_line = y_target + yy
+        for x, y in dots:
+            if x > x_line and y > y_line: counts[0] += 1
+            elif x < x_line and y > y_line: counts[1] += 1
+            elif x < x_line and y < y_line: counts[2] += 1
+            else: counts[3] += 1
+        val = max(counts)
+        ans = min(ans,val)
 
-print(max(counts))
+print(ans)
