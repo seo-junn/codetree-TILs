@@ -17,7 +17,7 @@ for y_line in range(0,1001,2):
         if y > y_line : count[0] += 1
         else: count[3] += 1
 
-    for i in range(n):
+    for i in range(N):
         if i == 0 or dots[i][0] != dots[i-1][0]:
             ans = min(ans,max(count))
 
