@@ -20,14 +20,14 @@ y_target = 0
 for i in range(1,1001):
     if xs[i]:
         cx += xs[i]
-    else:
+    elif i%2 == 0:
         diff = abs(N-cx-cx)
         if diff < x_diff:
             x_target = i
             x_diff = diff
     if ys[i]:
         cy += ys[i]
-    else:
+    elif i%2 == 0:
         diff = abs(N-cy-cy)
         if diff < y_diff:
             y_diff = diff
