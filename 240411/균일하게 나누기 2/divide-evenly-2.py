@@ -1,51 +1,31 @@
 import sys
 
 N = int(sys.stdin.readline())
-xs = [0]*1001
-ys = [0]*1001
 dots = []
 
 for _ in range(N):
     x,y = map(int,sys.stdin.readline().split())
-    xs[x] += 1
-    ys[y] += 1
     dots.append((x,y))
 
-cx = 0
-x_diff = sys.maxsize
-x_target = 0
-cy = 0
-y_diff = sys.maxsize
-y_target = 0
-for i in range(1,1001):
-    if xs[i]:
-        cx += xs[i]
-    elif i%2 == 0:
-        diff = abs(N-cx-cx)
-        if diff < x_diff:
-            x_diff = diff
-            x_target = i
-    if ys[i]:
-        cy += ys[i]
-    elif i%2 == 0:
-        diff = abs(N-cy-cy)
-        if diff < y_diff:
-            y_diff = diff
-            y_target = i
+dots.sort()
 
 ans = sys.maxsize
-window_size = 40
-for xx in range(-window_size,window_size+1,2):
-    for yy in range(-window_size,window_size+1,2):
-        counts = [0]*4
-        x_line = x_target + xx
-        y_line = y_target + yy
-        for x, y in dots:
-            if x > x_line and y > y_line: counts[0] += 1
-            elif x < x_line and y > y_line: counts[1] += 1
-            elif x < x_line and y < y_line: counts[2] += 1
-            else: counts[3] += 1
-        val = max(counts)
-        ans = min(ans,val)
+for y_line in range(0,1001,2):
+    count = [0]*4
 
+    for x,y in dots:
+        if y > y_line : count[0] += 1
+        else: count[3] += 1
+
+    for i in range(n):
+        if i == 0 or dots[i][0] != dots[i-1][0]:
+            ans = min(ans,max(count))
+
+        x,y = dots[i]
+        if y > y_line:
+            count[0] -= 1
+            count[1] += 1
+        else:
+            count[2] += 1
+            count[3] -= 1
 print(ans)
