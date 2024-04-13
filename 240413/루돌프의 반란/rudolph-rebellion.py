@@ -53,7 +53,10 @@ def rudolph_move(rr,rc):
     return nrr,nrc
 
 def santa_move(santa_num,rr,rc):
-    present_santa = alived[santa_num]
+    if santa_num in alived:
+        present_santa = alived[santa_num]
+    else:
+        return
     # when santa was stunned
     if present_santa.stun:
         present_santa.stun -= 1
