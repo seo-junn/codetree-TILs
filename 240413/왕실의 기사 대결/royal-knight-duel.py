@@ -5,6 +5,8 @@ dr = [-1,0,1,0]
 dc = [0,1,0,-1]
 
 def can_move(knight_num,direct):
+    if knight_num not in alived:
+        return res, set()
     q = deque()
     moved = set()
     pr,pc,ph,pw,pk,pd = alived[knight_num]
