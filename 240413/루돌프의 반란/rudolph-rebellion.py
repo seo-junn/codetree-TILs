@@ -94,7 +94,10 @@ def rudolph_hit(rr,rc,rdr,rdc):
     score_board[santa_num] += C
 
     # santa get stunned
-    present_santa.stun += 2
+    if present_santa.stun:
+        present_santa.stun += 1
+    else:
+        present_santa.stun += 2
 
     # santa moved
     psr,psc = rr,rc
