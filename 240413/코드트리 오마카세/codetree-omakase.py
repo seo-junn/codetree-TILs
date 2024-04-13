@@ -9,6 +9,8 @@ def in_range(start,end,target):
             return True
         else:
             return False
+    elif end-start >= L:
+        return True
     else:
         if start < target <= end:
             return True
