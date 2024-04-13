@@ -1,91 +1,74 @@
 import sys
 
-table = {}
-people = {}
-
-def in_range(start,end,target):
-    if end < L:
-        if start < target <= end:
-            return True
-        else:
-            return False
-    elif end-start >= L:
-        return True
-    else:
-        if start < target <= end:
-            return True
-        else:
-            start,end = 0,end%L
-            if start <= target <= end:
-                return True
-            else:
-                return False
-
-def turn(time):
-    global num_sushi
-    new_table = {}
-    if people:
-        for key in table.keys():
-            # extract table
-            temp = table[key]
-            for name in list(temp.keys()):
-                if name not in people: continue
-                if in_range(key,key+time,people[name][0]):
-                    amount = min(temp[name],people[name][1])
-                    temp[name] -= amount
-                    people[name][1] -= amount
-                    num_sushi -= amount
-                    if temp[name] == 0: temp.pop(name)
-                    if people[name][1] == 0: people.pop(name)
-
-            if temp: new_table[(key+time)%L] = temp
-    else:
-        for key in table.keys():
-            temp = table[key]
-            new_key = (key+time)%L
-            new_table[new_key] = temp
-    return new_table
-
-def put_sushi(x,name):
-    global num_sushi
-    num_sushi += 1
-    if x in table:
-        if name in table[x]:
-            table[x][name] += 1
-        else:
-            table[x][name] = 1
-    else:
-        table[x] = {}
-        table[x][name] = 1
-
 L,Q = map(int,sys.stdin.readline().split())
 
-present_time = 0
-num_sushi = 0
-for _ in range(Q):
-    command = sys.stdin.readline().strip().split()
-    table = turn(int(command[1])-present_time)
-    present_time = int(command[1])
-    if command[0] == '100':
-        x,name = int(command[2]),command[3]
-        if name in people and people[name][0] == x:
-            people[name][1] -= 1
-            if people[name][1] == 0:
-                people.pop(name)
-        else:
-            put_sushi(x,name)
+guests = set()
+sushi = {}
+arrival_time = {}
+position = {}
 
-    elif command[0] == '200':
-        x,name,n = int(command[2]),command[3],int(command[4])
-        people[name] = [x,n]
-        if x in table:
-            if name in table[x]:
-                amount = min(table[x][name],people[name][1])
-                table[x][name] -= amount
-                people[name][1] -= amount
-                num_sushi -= amount
-                if table[x][name] == 0: table[x].pop(name)
-                if people[name][1] == 0: people.pop(name)
+queries = []
+
+for _ in range(Q):
+    command = sys.stdin.readline().split()
+    cmd = int(command[0])
+    t,x,name,n = -1,-1,"",-1
+
+    if cmd == 100:
+        t,x = map(int,command[1:3])
+        name = command[3]
+
+        if name in sushi:
+            sushi[name].append((t, x))
+        else:
+            sushi[name] = [(t, x)]
+
+    elif cmd == 200:
+        t,x = map(int,command[1:3])
+        name = command[3]
+
+        arrival_time[name] = t
+        position[name] = x
+        guests.add(name)
 
     else:
-        print(len(people),num_sushi)
+        t = int(command[1])
+
+    queries.append((cmd,t,x,name,n))
+
+for name in guests:
+    px = position[name]
+    p_in_time = arrival_time[name]
+    p_exit_time = 0
+
+    for su_time, sx in sushi[name]:
+        if su_time < p_in_time:
+            psx = (sx+(p_in_time-su_time))%L
+            if psx <= px:
+                time_diff = px-psx
+            else:
+                time_diff = px+L-psx
+            eat_time = p_in_time + time_diff
+        else:
+            if sx <= px:
+                time_diff = px-sx
+            else:
+                time_diff = px+L-sx
+            eat_time = su_time + time_diff
+
+        p_exit_time = max(p_exit_time,eat_time)
+
+        queries.append((111,eat_time,-1,name,-1))
+
+    queries.append((222,p_exit_time,-1,name,-1))
+
+queries.sort(key=lambda x:(x[1],x[0]))
+
+sushi = 0
+people = 0
+for q in queries:
+    if q[0] == 100: sushi += 1
+    elif q[0] == 111: sushi -= 1
+    elif q[0] == 200: people += 1
+    elif q[0] == 222: people -= 1
+    else: print(people, sushi)
