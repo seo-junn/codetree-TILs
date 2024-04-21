@@ -1,0 +1,1 @@
+print('LeebrosCode\n'*int(input()))
