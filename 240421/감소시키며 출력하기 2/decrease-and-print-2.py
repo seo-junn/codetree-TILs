@@ -1,0 +1,1 @@
+print(*list(range(26,0,-1)))
