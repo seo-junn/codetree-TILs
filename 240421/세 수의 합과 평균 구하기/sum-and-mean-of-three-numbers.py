@@ -1,2 +1,3 @@
 s = sum(map(int,input().split()))
-print(s,s//3)
+print(s)
+print(s//3)
