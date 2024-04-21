@@ -1,0 +1,1 @@
+print(*list(range(10,27,2)))
