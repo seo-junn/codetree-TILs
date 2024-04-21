@@ -1,10 +1,15 @@
-base = [n**2 for n in range(70,0,-1)]
+from itertools import combinations
 
-count = 0
 n = int(input())
-for i in range(len(base)):
-    if base[i] <= n:
-        n -= base[i]
-        count += 1
+found = False
 
-print(count)
+for i in range(1,5):
+    for item in combinations(range(1,71),i):
+        temp = 0
+        for num in item:
+            temp += num**2
+        if temp == n:
+            print(len(item))
+            found = True
+            break
+    if found: break
