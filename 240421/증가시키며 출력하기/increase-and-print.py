@@ -1,1 +1,1 @@
-print(*list(range(5,17,2)))
+print(*list(range(5,18,2)))
