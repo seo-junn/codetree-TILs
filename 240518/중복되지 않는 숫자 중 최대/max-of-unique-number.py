@@ -1,12 +1,12 @@
-ans = -1
-duplicate = False
-
 N = int(input())
-for n in map(int,input().split()):
-    if n > ans:
-        ans = n
-        duplicate = False
-    elif n == ans:
-        duplicate = True
+base = set()
+nums = set()
 
-print(ans if not duplicate else -1)
+for n in map(int,input().split()):
+    if n in base:
+        if n in nums: nums.remove(n)
+    else:
+        base.add(n)
+        nums.add(n)
+
+print(max(nums) if nums else -1)
