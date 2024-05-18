@@ -1,4 +1,6 @@
-min_num = 101
+import sys
+
+min_num = sys.maxsize
 min_count = 0
 
 n = int(input())
