@@ -2,6 +2,10 @@ n1,n2 = map(int,input().split())
 A = list(map(int,input().split()))
 B = list(map(int,input().split()))
 
+if n1 < n2:
+    print("No")
+    exit(0)
+
 for i in range(n1-n2+1):
     find = True
     for j in range(n2):
