@@ -1,0 +1,1 @@
+print(chr(ord('a')+(ord(input())-ord('a')+1)%26))
