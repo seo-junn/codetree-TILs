@@ -1,0 +1,1 @@
+print(str(sum(map(int,input().split()))).count('1'))
