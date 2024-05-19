@@ -1,0 +1,1 @@
+for letter in list(input()): print(letter)
