@@ -1,6 +1,6 @@
 def gcd(n,m):
-    if m <= 1: return n
-    n, m = m, n%m
+    if n == 0: return m
+    n,m = m%n,n
     return gcd(n,m)
 
 n,m = map(int,input().split())
