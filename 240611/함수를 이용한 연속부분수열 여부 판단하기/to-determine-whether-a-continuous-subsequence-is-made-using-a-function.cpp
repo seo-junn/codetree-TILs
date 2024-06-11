@@ -2,7 +2,7 @@
 
 bool check(int n1, int n2, const int A[], const int B[]) {
     int count = 0;
-    for(int i = 0; i <= n1-n2; i++) {
+    for(int i = 0; i < n1; i++) {
         if(A[i] == B[count]) count++;
         else count = 0;
         if(count == n2) return true;
