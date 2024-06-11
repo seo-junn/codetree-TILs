@@ -25,7 +25,7 @@ int season(int Y, int M, int D) {
     if(leap_year(Y)) month[2]++;
     if(M > 12) return -1;
     if(D > month[M]) return -1;
-    if(M>3 && M <6) return 0;
+    if(M>2 && M <6) return 0;
     if(M>5 && M <9) return 1;
     if(M>8 && M <12) return 2;
     return 3;
