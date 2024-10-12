@@ -1,2 +1,6 @@
+def swap(a,b):
+    return b,a
+
 n,m = map(int,input().split())
-print(m,n)
+n,m = swap(n,m)
+print(n,m)
